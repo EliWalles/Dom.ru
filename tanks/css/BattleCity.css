@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'prstart';
+	src: url('../fonts/prstart.eot');
+	src: local('☺'), url('../fonts/prstart.woff') format('woff'), url('../fonts/prstart.ttf') format('truetype'), url('../fonts/prstart.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+  font-family: prstart;
+  font-size: 16px;
+  background-color: black;
+  overflow: hidden;
+}
+#main {
+  margin: 0 auto;
+  width: 512px;
+  color: white;
+}
