@@ -8,7 +8,7 @@ $(
 		var keyboard = new Keyboard(eventManager);
 		var sceneManager = new SceneManager(eventManager);
 		
-		zoomGame();
+		
 		
 		$('.fScont a').click(function(e){
 			$('#firstScreen').removeClass('active').slideUp();
@@ -39,25 +39,7 @@ $(
 			return canvas.getContext('2d');
 		};
 		
-		function zoomGame() {
-			var zGw = -(1920-$(window).width())/2;
-			var zGh = -(1080-$(window).height())/4;
-			var zG;
-			
-			$('#gameouter')
-				.css('left',zGw)
-				.css('top',zGh)
-			;
-			$('#pBoy')
-				.css('left',zGw)
-				.css('top',zGh)
-			;
-			
-			$('.ya-share2')
-				.css('left',zGw)
-				.css('top',zGh)
-			;
-		}	
+		
 
 	}
 );
