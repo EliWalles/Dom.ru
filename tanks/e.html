@@ -13,7 +13,6 @@
 		<meta property="og:description" content="Дом.ru Бизнес поздравляет мужчин с днем Защитника Отечества и дарит каждому ностальгический танковый симулятор прямиком из детства!" />
 		
 		<link rel="stylesheet" href="tpl/css/style.css" type="text/css" />
-		<link rel="stylesheet" href="tpl/css/style_new.css" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="css/BattleCity.css" />
 		<link rel="shortcut icon" href="tpl/img/favicon.ico" />
 		
@@ -125,7 +124,8 @@
 		<div id="gameouter">
 			<div id="main"></div>
 		</div>
-			<a href="e.html" id="eg"></a>
+		<div id="pBoy"><img src="tpl/img/boy.png"/></div>
+		
 			<script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
 <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus"></div>
@@ -152,12 +152,19 @@
 			</div>
 		</div>
 		<script>
-			$(document).ready(function(){
-				var egL = 664-(1920-$(window).width())/2;
-				var egT = 801-(1080-$(window).height())/4;
-				$('#eg')
-					.css('left',egL+'px')
-					.css('top',egT+'px');
+			$(function () {
+			var left = 0,
+			top = 0,
+			element = jQuery('#pBoy'),
+			offset =  { left: element.offset().left};
+			jQuery('body').bind('mousemove', function(e){
+			    left = (e.pageX-offset.left);
+			    var mouseXPercent = Math.round(left / element.width() * 100);
+			    var diffX = 1500;
+			    var myX = diffX * (mouseXPercent / 15000)-(1920-screen.width)/2;
+			    jQuery('#pBoy').css({left   : myX+'px'});
+			    var pageX=e.pageX;
+			 });
 			});
 		</script>
 	</body>
