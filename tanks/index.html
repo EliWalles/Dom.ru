@@ -154,11 +154,33 @@
 		<script>
 			$(document).ready(function(){
 				var egL = 664-(1920-$(window).width())/2;
-				var egT = 801-(1080-$(window).height())/4;
+				var egT = 801-(1080-$(window).height())/2;
 				$('#eg')
 					.css('left',egL+'px')
 					.css('top',egT+'px');
 			});
+			$(function () {
+			 zoomGame();
+			});
+			function zoomGame() {
+			var zGw = -(1920-$(window).width())/2;
+			var zGh = -(1080-$(window).height())/2;
+			var zG;
+			
+			$('#gameouter')
+				.css('left',zGw)
+				.css('top',zGh)
+			;
+			$('#pBoy')
+				.css('left',zGw)
+				.css('top',zGh)
+			;
+			
+			$('.ya-share2')
+				.css('left',zGw)
+				.css('top',zGh)
+			;
+		}	
 		</script>
 	</body>
 </html>
