@@ -1,0 +1,29 @@
+#gameouter {
+    background-image: url(../img/background.png);
+}
+.ya-share2 {
+    padding: 735px 517px 315px 1258px;
+}
+#overlay {
+    background: rgba(0,0,0,0.75);
+}
+.fScont a {
+    top: 305px;
+    right: 99px;
+}
+#firstScreen .bottom .sq2 {
+    opacity: 0.9;
+}
+#firstScreen .bottom .sq2 {
+    opacity: 0.9;
+}
+#firstScreen .bottom .sq3 {
+    opacity: 0.85;
+}
+#eg {
+	display: block;
+	position: absolute;
+	z-index: 3;
+	width: 12px;
+	height: 12px;
+}

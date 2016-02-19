@@ -58,20 +58,7 @@ $(
 				.css('top',zGh)
 			;
 		}	
-		
-				
-			var left = 0,
-			top = 0,
-			element = jQuery('#pBoy'),
-			offset =  { left: element.offset().left};
-			jQuery('body').bind('mousemove', function(e){
-			    left = (e.pageX-offset.left);
-			    var mouseXPercent = Math.round(left / element.width() * 100);
-			    var diffX = 1500;
-			    var myX = diffX * (mouseXPercent / 15000)-(1920-screen.width)/2;
-			    jQuery('#pBoy').css({left   : myX+'px'});
-			    var pageX=e.pageX;
-			 });
+
 	}
 );
 $(document).ready(function(){
