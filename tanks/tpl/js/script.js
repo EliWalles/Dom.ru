@@ -7,7 +7,12 @@ $(
 		var eventManager = new EventManager();
 		var keyboard = new Keyboard(eventManager);
 		var sceneManager = new SceneManager(eventManager);
-		
+		var fsH = $('#firstScreen').height();
+		var DfsH = $(window).height()-20;
+		if (DfsH < fsH ) {
+			var fsZ = DfsH/fsH;
+			$('#firstScreen').css('transform','scale('+fsZ+')');
+		}
 		
 		
 		$('.fScont a').click(function(e){
