@@ -20,6 +20,10 @@ body {
 	overflow-x: hidden;
 }
 
+body.no-overflow {
+	
+}
+
 a:focus {
     outline: none;
     outline-offset: 0;
@@ -150,7 +154,7 @@ footer {
     width: 395px;
     height: 95px;
     background: #F5DC33 none repeat scroll 0% 0%;
-    position: fixed;
+    position: absolute;
     left: 0px;
     bottom: -95px;
     content: "";
@@ -166,7 +170,7 @@ footer {
 }
 
 .close {
-    position: fixed;
+    position: absolute;
     display: block;
     width: 95px;
     text-align: center;
@@ -184,7 +188,7 @@ footer {
     width: 95px;
     height: 95px;
     background: rgba(246, 220, 52, 1) none repeat scroll 0% 0%;
-    position: fixed;
+    position: absolute;
     right: 0px;
 }
 
@@ -202,7 +206,7 @@ footer {
 }
 
 .co-big {
-    position: fixed;
+    position: absolute;
     top: -50px;
     z-index: 5;
     left: -100px;
@@ -211,7 +215,7 @@ footer {
 
 .post-content {
     display: block;
-    position: fixed;
+    position: absolute;
     right: 20px;
     width: 265px;
     font-size: 18px;

@@ -203,15 +203,15 @@ input {
 .product .content .owned {
     position: absolute;
     right: 20px;
-    top: 3px;
+    top: -17px;
     font-size: 10px;
     opacity: 1;
     text-shadow: none;
-    background: #3e6d42;
+    background: #3E6D42 none repeat scroll 0% 0%;
     font-weight: bold;
-    color: #fff;
-    height: 20px;
-    padding: 10px;
+    color: #FFF;
+    height: auto;
+    padding: 4px 10px;
     border-radius: 5px;
 }
 .product:hover {
@@ -234,7 +234,7 @@ input {
     z-index: 10;
 }
 #cookieCursors {
-    background: transparent url("../img/woman-map.png") no-repeat scroll center center;
+    background: transparent url("../img/woman-map.gif") no-repeat scroll center center;
     width: 50px;
     height: 162px;
     position: absolute;
@@ -243,7 +243,7 @@ input {
     display: none;
 }
 #fax {
-    background: transparent url("../img/fax.png") no-repeat scroll center center;
+    background: transparent url("../img/fax.gif") no-repeat scroll center center;
     width: 138px;
     height: 160px;
     position: absolute;
@@ -259,7 +259,7 @@ input {
 	display:block !important;
 }
 #row1.row {
-    background: transparent url("../img/manager.png") no-repeat scroll center center;
+    background: transparent url("../img/manager.gif") no-repeat scroll center center;
     width: 204px;
     height: 202px;
     position: absolute;
@@ -284,13 +284,13 @@ input {
     left: 24px;
     content: "";
     display: block;
-    background: transparent url("../img/empty.png") no-repeat scroll center center;
+    background: transparent url("../img/empty.gif") no-repeat scroll center center;
     width: 704px;
     height: 780px;
     z-index: 2;
 }
 #clock {
-    background: transparent url("../img/clock.png") no-repeat scroll center center;
+    background: transparent url("../img/clock.gif") no-repeat scroll center center;
     width: 32px;
     height: 38px;
     position: absolute;
@@ -336,7 +336,7 @@ input {
 }
 
 #row3.row {
-    background: transparent url("../img/internet.png") no-repeat scroll center center;
+    background: transparent url("../img/internet.gif") no-repeat scroll center center;
     width: 68px;
     height: 73px;
     position: absolute;
@@ -346,7 +346,7 @@ input {
     z-index: 5;
 }
 #r2d2 {
-    background: transparent url("../img/r2d2.png") no-repeat scroll center center;
+    background: transparent url("../img/r2d2.gif") no-repeat scroll center center;
     width: 38px;
     height: 62px;
     position: absolute;
@@ -745,6 +745,7 @@ h1 {
 	color: #000000;
 	font-weight: 500;
 	margin: 40px;
+	margin-bottom: -20px;
 }
 #closeD:hover {
     text-decoration: none;
