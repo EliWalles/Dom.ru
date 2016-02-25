@@ -23,6 +23,7 @@ $(document).ready(
 		);
 		$('.calendar a').click(
 			function(e) {
+				$('body').addClass('no-overflow');
 				var myMes = $(this).data('m');
 				$('.co-month').hide();
 				$('.co-cont').hide();
@@ -31,7 +32,7 @@ $(document).ready(
 				$('.co-month').html($(this).find('p.title').html());
 				$('.post-content').attr('id','m'+myMes);
 				$('.co-big').attr('id','mi'+myMes);
-				var imagefg = 'http://128.75.68.170'+$('.co-big').attr('src');
+				var imagefg = 'http://landau-inc.ru'+$('.co-big').attr('src');
 				var descf = $(this).find('p.phrase').html()+'<br/><br/><strong> - '+$(this).find('p.author').html()+'</strong>';
 				$('.post-content span#clst').html('<p>'+descf+'</p><script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script><script type="text/javascript" src="//yastatic.net/share2/share.js"></script><div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter" data-description="'+$(this).find('p.phrase').html()+'"	data-image="'+imagefg+'" data-title="'+$(this).find('p.author').html()+'"></div>');
 				$('.co-cont').html($(this).find('p.desc').html());
@@ -118,5 +119,6 @@ function click() {
 	$('.co-big').removeClass('zoomInRight');
 	$('.contentOverlay').removeClass('zoomInUp').addClass('zoomOutDown').addClass('animated');
 	$('.overlay').stop().animate({opacity: "0"}, 1400, function() {$('.overlay').hide();}); 
+	$('body').removeClass('no-overflow');
 }
 

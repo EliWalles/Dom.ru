@@ -1,24 +1,31 @@
 /* Фразы!!!! */
 var fraz = [
 	'Шеф вы сегодня в ударе!',
-	'Шеф вы сегодня в ударе! 2',
-	'Шеф вы сегодня в ударе! 3',
-	'Шеф вы сегодня в ударе! 4',
-	'Шеф вы сегодня в ударе! 5',
-	'Шеф вы сегодня в ударе! 6',
-	'Шеф вы сегодня в ударе! 7',
-	'Шеф вы сегодня в ударе! 8',
-	'Шеф вы сегодня в ударе! 9',
-	'Шеф вы сегодня в ударе! 10',
+	'Чуть помедленнее, чуть помедленнее!',
+	'Воу-воу, шеф, полегче!',
+	'Рубли потекли в кассу!',
+	'Деньги рекут текой!',
+	'Босс, вас уже не остановить!',
+	'Бизнес крутится, деньги мутятся! ',
+	'Не так быстро, начальник! ',
+	'Билл Гейтс уже отдыхает!',
+	'Шеф, мы не успеваем тратить!',
 ]
 /* конец */
 
-
-
-
-
-
 jQuery(document).ready(function(e){
+	jQuery('.vk').click(function(e){
+		jQuery(this).attr('href','http://vk.com/share.php?url='+window.location.href+'&title=Дом.ру кликер&description=Моя компания '+jQuery('#nameComp span').html()+' заработала '+jQuery('#cookies span').html()+'!&image=http://'+window.location.host+'/game2016/tpl/img/tel.png');
+	});
+	jQuery('.tw').click(function(e){
+		jQuery(this).attr('href','https://twitter.com/intent/tweet?status=Моя компания '+jQuery('#nameComp span').html()+' заработала '+jQuery('#cookies span').html()+'! '+window.location.href);
+	});
+	jQuery('.fb').click(function(e){
+		jQuery(this).attr('href','https://www.facebook.com/sharer/sharer.php?&p[title]=Дом.ру кликер&p[summary]=Моя компания '+jQuery('#nameComp span').html()+' заработала '+jQuery('#cookies span').html()+'!&p[url]='+window.location.href+'&p[images][0]=http://'+window.location.host+'/game2016/tpl/img/tel.png');
+	});
+	jQuery('.ok').click(function(e){
+		jQuery(this).attr('href','https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl='+window.location.href+'&st.comments=Моя компания '+jQuery('#nameComp span').html()+' заработала '+jQuery('#cookies span').html()+'!');
+	});
 	if (screen.height<700) {
 		var mZoomW = screen.height/700;
 		jQuery('#domru').css('transform','scale('+mZoomW+', '+mZoomW+')');
@@ -112,13 +119,13 @@ function getCookie(name) {
 }
 function soundClick(sC) {
   var audio = new Audio(); // Создаём новый элемент Audio
-  audio.src = '/game/tpl/sound/'+sC+'.mp3'; // Указываем путь к звуку "клика"
+  audio.src = '/game2016/tpl/sound/'+sC+'.mp3'; // Указываем путь к звуку "клика"
   audio.volume=0.5;
   audio.autoplay = true; // Автоматически запускаем
 }
 function soundClick2(sC,vl) {
   var audio = new Audio(); // Создаём новый элемент Audio
-  audio.src = '/game/tpl/sound/'+sC+'.mp3'; // Указываем путь к звуку "клика"
+  audio.src = '/game2016/tpl/sound/'+sC+'.mp3'; // Указываем путь к звуку "клика"
   audio.volume=vl;
   audio.autoplay = true; // Автоматически запускаем
 }

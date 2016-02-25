@@ -1,13 +1,3 @@
-/*
-All this code is copyright Orteil, 2013.
-	-with some help, advice and fixes by Debugbro and Opti
-Spoilers ahead.
-http://orteil.dashnet.org
-*/
-
-/*=====================================================================================
-MISC HELPER FUNCTIONS
-=======================================================================================*/
 function l(what) {return document.getElementById(what);}
 function choose(arr) {return arr[Math.floor(Math.random()*arr.length)];}
 
@@ -799,28 +789,9 @@ Game.Launch=function()
 			}
 			else
 			{
-				Game.goldenCookie.wrath=0;
-				me.style.background='url(img/goldCookie.png)';
 			}
 			var r=Math.floor(Math.random()*360);
-			me.style.transform='rotate('+r+'deg)';
-			me.style.mozTransform='rotate('+r+'deg)';
-			me.style.webkitTransform='rotate('+r+'deg)';
-			me.style.msTransform='rotate('+r+'deg)';
-			me.style.oTransform='rotate('+r+'deg)';
-			var screen=l('game').getBoundingClientRect();
-			Game.goldenCookie.x=Math.floor(Math.random()*(screen.right-screen.left-128)+screen.left+64)-64;
-			Game.goldenCookie.y=Math.floor(Math.random()*(screen.bottom-screen.top-128)+screen.top+64)-64;
-			me.style.left=Game.goldenCookie.x+'px';
-			me.style.top=Game.goldenCookie.y+'px';
-			me.style.display='block';
-			var dur=13;
-			if (Game.Has('Lucky day')) dur*=2;
-			if (Game.Has('Serendipity')) dur*=2;
-			if (Game.goldenCookie.chain>0) dur=6;
-			Game.goldenCookie.dur=dur;
-			Game.goldenCookie.life=Game.fps*Game.goldenCookie.dur;
-			me.toDie=0;
+			
 		}
 		Game.goldenCookie.update=function()
 		{
@@ -858,89 +829,7 @@ Game.Launch=function()
 			var choice=choose(list);
 			return choice;
 		}
-		Game.goldenCookie.click=function()
-		{
-			if (Game.goldenCookie.life>0)
-			{
-				Game.goldenCookie.toDie=1;
-				Game.goldenClicks++;
-				
-				if (Game.goldenClicks>=1) Game.Win('Golden cookie');
-				if (Game.goldenClicks>=7) Game.Win('Lucky cookie');
-				if (Game.goldenClicks>=27) Game.Win('A stroke of luck');
-				if (Game.goldenClicks>=77) Game.Win('Fortune');
-				if (Game.goldenClicks>=777) Game.Win('Leprechaun');
-				if (Game.goldenClicks>=7777) Game.Win('Black cat\'s paw');
-				
-				if (Game.goldenClicks>=7) Game.Unlock('Lucky day');
-				if (Game.goldenClicks>=27) Game.Unlock('Serendipity');
-				if (Game.goldenClicks>=77) Game.Unlock('Get lucky');
-				
-				l('goldenCookie').style.display='none';
-				
-				var choice=Game.goldenCookie.choose();
-				
-				if (Game.goldenCookie.chain>0) choice='chain cookie';
-				Game.goldenCookie.last=choice;
-				
-				if (choice!='chain cookie') Game.goldenCookie.chain=0;
-				if (choice=='frenzy')
-				{
-					var time=77+77*Game.Has('Get lucky');
-					Game.frenzy=Game.fps*time;
-					Game.frenzyPower=7;
-					Game.recalculateGains=1;
-					Game.Popup('Frenzy : cookie production x7 for '+time+' seconds!');
-				}
-				else if (choice=='multiply cookies')
-				{
-					var moni=Math.min(Game.cookies*0.1,Game.cookiesPs*60*20)+13;//add 10% to cookies owned (+13), or 20 minutes of cookie production - whichever is lowest
-					Game.Earn(moni);
-					Game.Popup('Lucky! +'+Beautify(moni)+' cookies!');
-				}
-				else if (choice=='ruin cookies')
-				{
-					var moni=Math.min(Game.cookies*0.05,Game.cookiesPs*60*10)+13;//lose 5% of cookies owned (-13), or 10 minutes of cookie production - whichever is lowest
-					moni=Math.min(Game.cookies,moni);
-					Game.Spend(moni);
-					Game.Popup('Ruin! Lost '+Beautify(moni)+' cookies!');
-				}
-				else if (choice=='blood frenzy')
-				{
-					var time=6+6*Game.Has('Get lucky');
-					Game.frenzy=Game.fps*time;//*2;//we shouldn't need *2 but I keep getting reports of it lasting only 3 seconds
-					Game.frenzyPower=666;
-					Game.recalculateGains=1;
-					Game.Popup('Elder frenzy : cookie production x666 for '+time+' seconds!');
-				}
-				else if (choice=='clot')
-				{
-					var time=66+66*Game.Has('Get lucky');
-					Game.frenzy=Game.fps*time;
-					Game.frenzyPower=0.5;
-					Game.recalculateGains=1;
-					Game.Popup('Clot : cookie production halved for '+time+' seconds!');
-				}
-				else if (choice=='click frenzy')
-				{
-					var time=13+13*Game.Has('Get lucky');
-					Game.clickFrenzy=Game.fps*time;
-					Game.recalculateGains=1;
-					Game.Popup('Click frenzy! Clicking power x777 for '+time+' seconds!');
-				}
-				else if (choice=='chain cookie')
-				{
-					Game.goldenCookie.chain++;
-					var moni='';
-					for (var i=0;i<Game.goldenCookie.chain;i++) {moni+='6';}
-					moni=parseInt(moni);
-					Game.Popup('Cookie chain : +'+Beautify(moni)+' cookies!');
-					if ((Math.random()<0.1 || Game.goldenCookie.chain>12 || moni>=Game.cookies*1) && Game.goldenCookie.chain>4) Game.goldenCookie.chain=0;
-					Game.Earn(moni);
-				}
-			}
-		}
-		l('goldenCookie').onclick=Game.goldenCookie.click;
+		
 		
 		
 		/*=====================================================================================
@@ -954,7 +843,6 @@ Game.Launch=function()
 			Game.cookieParticles[i]={x:0,y:0,life:-1};
 			str+='<div id="cookieParticle'+i+'" class="cookieParticle"></div>';
 		}
-		l('cookieShower').innerHTML=str;
 		Game.cookieParticlesUpdate=function()
 		{
 			for (var i in Game.cookieParticles)
@@ -978,37 +866,6 @@ Game.Launch=function()
 		}
 		Game.cookieParticleAdd=function()
 		{
-			//pick the first free (or the oldest) particle to replace it
-			if (Game.prefs.particles)
-			{
-				var highest=0;
-				var highestI=0;
-				for (var i in Game.cookieParticles)
-				{
-					if (Game.cookieParticles[i].life==-1) {highestI=i;break;}
-					if (Game.cookieParticles[i].life>highest)
-					{
-						highest=Game.cookieParticles[i].life;
-						highestI=i;
-					}
-				}
-				var i=highestI;
-				var rect=l('cookieShower').getBoundingClientRect();
-				var x=Math.floor(Math.random()*(rect.right-rect.left));
-				var y=-32;
-				var me=Game.cookieParticles[i];
-				if (!me.l) me.l=l('cookieParticle'+i);
-				me.life=0;
-				me.x=x;
-				me.y=y;
-				var r=Math.floor(Math.random()*360);
-				me.l.style.backgroundPosition=(Math.floor(Math.random()*8)*64)+'px 0px';
-				me.l.style.transform='rotate('+r+'deg)';
-				me.l.style.mozTransform='rotate('+r+'deg)';
-				me.l.style.webkitTransform='rotate('+r+'deg)';
-				me.l.style.msTransform='rotate('+r+'deg)';
-				me.l.style.oTransform='rotate('+r+'deg)';
-			}
 		}
 		
 		//rising numbers
@@ -1079,31 +936,9 @@ Game.Launch=function()
 			Game.particles[i]={x:0,y:0,life:-1,text:''};
 			str+='<div id="particle'+i+'" class="particle title"></div>';
 		}
-		l('particles').innerHTML=str;
 		Game.particlesUpdate=function()
 		{
-			Game.particlesY=0;
-			for (var i in Game.particles)
-			{
-				var me=Game.particles[i];
-				if (me.life!=-1)
-				{
-					Game.particlesY+=64;//me.l.clientHeight;
-					var y=me.y-(1-Math.pow(1-me.life/(Game.fps*4),10))*50;
-					//me.y=me.life*0.25+Math.random()*0.25;
-					me.life++;
-					var el=me.l;
-					el.style.left=Math.floor(-200+me.x)+'px';
-					el.style.bottom=Math.floor(-y)+'px';
-					el.style.opacity=1-(me.life/(Game.fps*4));
-					if (me.life>=Game.fps*4)
-					{
-						me.life=-1;
-						el.style.opacity=0;
-						el.style.display='none';
-					}
-				}
-			}
+			
 		}
 		Game.particlesAdd=function(text,el)
 		{
@@ -1136,10 +971,6 @@ Game.Launch=function()
 			me.x=x;
 			me.y=y-Game.particlesY;
 			me.text=text;
-			me.l.innerHTML=text;
-			me.l.style.left=Math.floor(Game.particles[i].x-200)+'px';
-			me.l.style.bottom=Math.floor(-Game.particles[i].y)+'px';
-			me.l.style.display='block';
 			Game.particlesY+=60;
 		}
 		Game.Popup=function(text)
@@ -2048,7 +1879,7 @@ Game.Launch=function()
 					me.displayName='Телевидение';
 					me.icon='tv1';
 				}
-				str+='<div class="product"  onclick="Game.ObjectsById['+me.id+'].buy();" id="product'+me.id+'"><div class="icon" style="background-image:url(/game/tpl/img/'+me.icon+'.png);"></div><div class="content"><div class="title">'+me.displayName+'</div><span class="price">'+Beautify(Math.round(me.price))+'р.</span>'+(me.amount>0?('<div class="title owned">'+me.amount+'<br/>уровень</div>'):'')+'</div></div>';
+				str+='<div class="product"  onclick="Game.ObjectsById['+me.id+'].buy();" id="product'+me.id+'"><div class="icon" style="background-image:url(/game2016/tpl/img/'+me.icon+'.png);"></div><div class="content"><div class="title">'+me.displayName+'</div><span class="price">'+Beautify(Math.round(me.price))+'р.</span>'+(me.amount>0?('<div class="title owned">'+me.amount+' уровень</div>'):'')+'</div></div>';
 			}
 			l('products').innerHTML=str;
 			Game.storeToRebuild=0;
@@ -2077,6 +1908,7 @@ Game.Launch=function()
 			var str='';
 			$('#cookieCursors').fadeIn('slow');
 			if (jQuery('#cookieCursors').is(":visible") == true) {
+			if (!rand) {
 	var rand = getRandomArbitary(10000, 30000);
 	setInterval(function fraza() {
 		var ml = fraz.length-1;
@@ -2091,7 +1923,7 @@ Game.Launch=function()
   		});
 		
 	}, rand);
-	}
+	}}
 			$('#fax').fadeIn('slow');
 			$('#clock').fadeIn('slow');
 			$('#stel').fadeIn('slow');
@@ -3033,7 +2865,7 @@ Game.Launch=function()
 			if (Game.pledges>=5) Game.Win('Elder slumber');
 			if (Game.pledges>=10) Game.Unlock('Sacrificial rolling pins');
 			
-			if (!Game.HasAchiev('Cookie-dunker') && l('bigCookie').getBoundingClientRect().bottom>l('milk').getBoundingClientRect().top+16 && Game.milkProgress>0.1) Game.Win('Cookie-dunker');
+			
 		}
 		
 		Game.cookiesd+=(Game.cookies-Game.cookiesd)*0.3;
@@ -3069,29 +2901,7 @@ Game.Launch=function()
 		if (Math.floor(Game.T%Game.fps/4)==0) Game.DrawGrandmapocalypse();
 		
 		//handle milk and milk accessories
-		if (Game.prefs.milk)
-		{
-			var x=Math.floor((Game.T*2+Math.sin(Game.T*0.1)*2+Math.sin(Game.T*0.03)*2-(Game.milkH-Game.milkHd)*2000)%480);
-			var y=0;
-			var m1=l('milkLayer1');
-			var m2=l('milkLayer2');
-			m1.style.backgroundPosition=x+'px '+y+'px';
-			m2.style.backgroundPosition=x+'px '+y+'px';
-			l('milk').style.height=(Game.milkHd*100)+'%';
-			var m1o=1;
-			var m2o=0;
-			var m1i='milkWave';
-			var m2i='chocolateMilkWave';
-			if (Game.milkProgress<1) {m1o=1;m1i='milkWave';m2i='chocolateMilkWave';}
-			else if (Game.milkProgress<2) {m1o=1-(Game.milkProgress-1);m1i='milkWave';m2i='chocolateMilkWave';}
-			else if (Game.milkProgress<3) {m1o=1-(Game.milkProgress-2);m1i='chocolateMilkWave';m2i='raspberryWave';}
-			else {m1o=1;m1i='raspberryWave';m2i='raspberryWave';}
-			m2o=1-m1o;
-			if (m1.style.backgroundImage!='url(/game/tpl/img/'+m1i+'.png') m1.style.backgroundImage='url(/game/tpl/img/'+m1i+'.png)';
-			if (m2.style.backgroundImage!='url(/game/tpl/img/'+m2i+'.png') m2.style.backgroundImage='url(/game/tpl/img/'+m2i+'.png)';
-			m1.style.opacity=m1o;
-			m2.style.opacity=m2o;
-		}
+		
 		
 	
 		
@@ -3104,22 +2914,11 @@ Game.Launch=function()
 		}
 		
 		//handle cookies
-		if (Game.prefs.particles)
-		{
-			if (Game.elderWrathD<=1.5)
-			{
-				if (Game.cookiesPs>=1000) l('cookieShower').style.backgroundImage='url(img/cookieShower3.png)';
-				else if (Game.cookiesPs>=500) l('cookieShower').style.backgroundImage='url(img/cookieShower2.png)';
-				else if (Game.cookiesPs>=50) l('cookieShower').style.backgroundImage='url(img/cookieShower1.png)';
-				else l('cookieShower').style.backgroundImage='none';
-				l('cookieShower').style.backgroundPosition='0px '+(Math.floor(Game.T*2)%512)+'px';
-			}
-			if (Game.elderWrathD>=1 && Game.elderWrathD<1.5) l('cookieShower').style.opacity=1-((Game.elderWrathD-1)/0.5);
-		}
 		
-		var unit=(Math.round(Game.cookiesd)==1?' cookie':' рублей');
+		
+		var unit=(Math.round(Game.cookiesd)==1?' рубль':' рублей');
 		if (Math.round(Game.cookiesd).toString().length>11) unit='<br>рублей';
-		l('cookies').innerHTML=Beautify(Math.round(Game.cookiesd))+unit+'<div>+'+Beautify(Game.cookiesPs,1)+' рублей в секунду</div>';//display cookie amount
+		l('cookies').innerHTML='<span>'+Beautify(Math.round(Game.cookiesd))+unit+'</span><div>+'+Beautify(Game.cookiesPs,1)+' рублей в секунду</div>';//display cookie amount
 		
 		/*
 		var el=l('bigCookie');
@@ -3170,12 +2969,12 @@ Game.Launch=function()
 		
 		//latency compensator
 		Game.accumulatedDelay+=((new Date().getTime()-Game.time)-1000/Game.fps);
-		Game.accumulatedDelay=Math.min(Game.accumulatedDelay,1000*5);//don't compensate over 5 seconds; if you do, something's probably very wrong
+		Game.accumulatedDelay=Math.min(Game.accumulatedDelay,1000*5);
 		Game.time=new Date().getTime();
 		while (Game.accumulatedDelay>0)
 		{
 			Game.Logic();
-			Game.accumulatedDelay-=1000/Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
+			Game.accumulatedDelay-=1000/Game.fps;
 		}
 		Game.catchupLogic=0;
 		
