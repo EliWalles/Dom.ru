@@ -19,10 +19,63 @@ $(
 		  	   }
 	    });
 		
+		$('#places a').click(function(e){
+			var Pid = $(this).data('id');
+			pc(Pid);
+			e.preventDefault();
+		});
+		
+		$('#pc a').click(function(e){
+			var Pid = $(this).data('id');
+			pc(Pid);
+			e.preventDefault();
+		});
 		
 
 	}
 );
+function addHandler(object, event, handler) {
+    if (object.addEventListener) {
+      object.addEventListener(event, handler, false);
+    }
+    else if (object.attachEvent) {
+      object.attachEvent('on' + event, handler);
+    }
+    else alert("Обработчик не поддерживается");
+  }
+  // Добавляем обработчики для разных браузеров
+  addHandler(window, 'DOMMouseScroll', wheel);
+  addHandler(window, 'mousewheel', wheel);
+  addHandler(document, 'mousewheel', wheel);
+  // Функция, обрабатывающая событие
+  function wheel(event) {
+    var delta; // Направление колёсика мыши
+    event = event || window.event;
+    // Opera и IE работают со свойством wheelDelta
+    if (event.wheelDelta) { // В Opera и IE
+      delta = event.wheelDelta / 120;
+      // В Опере значение wheelDelta такое же, но с противоположным знаком
+      if (window.opera) delta = -delta; // Дополнительно для Opera
+    }
+    else if (event.detail) { // Для Gecko
+      delta = -event.detail / 3;
+    }
+    // Запрещаем обработку события браузером по умолчанию
+    if (event.preventDefault) event.preventDefault();
+    event.returnValue = false;
+    if (delta>0) {
+	       var pid = $('#places a.active').attr('data-id');
+	       pid = Number(pid) - 1;
+	       if (pid==0) pid=7;
+	       pc(pid);
+    } else {
+	      var pid = $('#places a.active').attr('data-id');
+	      pid = Number(pid) + 1;
+	       if (pid==8) pid=1;
+	      pc(pid);
+    }
+  }
+
 $(document).ready(function(){
 
 });
@@ -39,19 +92,7 @@ function ShipCenter() {
 		});
 		$('.arrow').show();
 	}
-	cloud1();
-	cloud2();
-	cloud3();
-	cloud4();
-	cloud5();
-	ice();
-	dron();
-	setInterval(ice, 80000);
-	setInterval(cloud1, 35000);
-	setInterval(cloud2, 45000);
-	setInterval(cloud3, 30000);
-	setInterval(cloud4, 55000);
-	setInterval(cloud5, 40000);
+	onloadp();
 }
 
 function arrowHover() {
@@ -138,3 +179,39 @@ function arrowHover() {
 	function dronRL2() {
 		$('#dron').css('transform',"rotate(-1deg)");
 	}
+	function pc(idf) {
+		$('#opis').removeClass('pc1');
+		$('#opis').removeClass('pc2');
+		$('#opis').removeClass('pc3');
+		$('#opis').removeClass('pc4');
+		$('#opis').removeClass('pc5');
+		$('#opis').removeClass('pc6');
+		$('#opis').removeClass('pc7');
+		$('#places a').removeClass('active');
+		$('#pc a').removeClass('active');
+		$('#pcI img').removeClass('active');
+		$('#pc'+idf).addClass('active');
+		$('#pcI'+idf).addClass('active');
+		$('#pl'+idf).addClass('active');
+		$('#title').html($('#pl'+idf).html());
+		$('#cont').html($('#pc'+idf).data('text'));
+		$('#opis').addClass('pc'+idf)
+	}
+
+	function onloadp() {
+		cloud1();
+		cloud2();
+		cloud3();
+		cloud4();
+		cloud5();
+		ice();
+		dron();
+		setInterval(ice, 80000);
+		setInterval(cloud1, 35000);
+		setInterval(cloud2, 45000);
+		setInterval(cloud3, 30000);
+		setInterval(cloud4, 55000);
+		setInterval(cloud5, 40000);
+		pc(1);
+	}
+
