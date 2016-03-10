@@ -48,6 +48,7 @@ $(
 
 $(document).ready(function(){
 	$('body').removeClass('disable');
+	$('#disable').remove();
 	$('#pcI img').hover(function() {
 		$(this).addClass('op05');
 	}, function() {
