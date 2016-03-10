@@ -28,8 +28,8 @@ $(document).ready(function(){
 });
 
 function ShipCenter() {
-	var sW = screen.width;
-	var sH = screen.height;
+	var sW = $(window).width();
+	var sH = $(window).height();
 	if (sW < 1920) {
 		var dW = (1920-sW)/2;
 		var dH = (1080-sH)/2;
@@ -44,11 +44,14 @@ function ShipCenter() {
 	cloud3();
 	cloud4();
 	cloud5();
-	setInterval(cloud1, 25000);
-	setInterval(cloud2, 35000);
-	setInterval(cloud3, 20000);
-	setInterval(cloud4, 45000);
-	setInterval(cloud5, 30000);
+	ice();
+	dron();
+	setInterval(ice, 80000);
+	setInterval(cloud1, 35000);
+	setInterval(cloud2, 45000);
+	setInterval(cloud3, 30000);
+	setInterval(cloud4, 55000);
+	setInterval(cloud5, 40000);
 }
 
 function arrowHover() {
@@ -60,7 +63,7 @@ function arrowHover() {
 	}, function() {});
 	$( "#arrowRight" ).hover(function() {
 		var aRight = $('#ship').css('left');
-		var sW = screen.width;
+		var sW = $(window).width();
 		var dW = 1920-sW;
 
 		$('#ship').animate({
@@ -69,7 +72,7 @@ function arrowHover() {
 	}, function() {});
 	$( "#arrowDown" ).hover(function() {
 		var aRight = $('#ship').css('left');
-		var sH = screen.height;
+		var sH = $(window).height();
 		var dH = 1080-sH;
 		$('#ship').animate({
 			top: "-"+dH+'px',
@@ -83,32 +86,55 @@ function arrowHover() {
 	}, function() {});
 }
 	function cloud1() {
-		$('#c1').css('left','-200px');
+		$('#c1').css('right','-300px');
 		$('#c1').animate({
-			left: "100%",
-		},20000);
-	};
-	function cloud2() {
-		$('#c2').css('left','-200px');
-		$('#c2').animate({
-			left: "100%",
+			right: "100%",
 		},30000);
 	};
-	function cloud3() {
-		$('#c3').css('left','-200px');
-		$('#c3').animate({
-			left: "100%",
-		},15000);
-	};
-	function cloud4() {
-		$('#c4').css('left','-200px');
-		$('#c4').animate({
-			left: "100%",
+	function cloud2() {
+		$('#c2').css('right','-300px');
+		$('#c2').animate({
+			right: "100%",
 		},40000);
 	};
-	function cloud5() {
-		$('#c5').css('left','-300px');
-		$('#c5').animate({
-			left: "100%",
+	function cloud3() {
+		$('#c3').css('right','-300px');
+		$('#c3').animate({
+			right: "100%",
 		},25000);
 	};
+	function cloud4() {
+		$('#c4').css('right','-300px');
+		$('#c4').animate({
+			right: "100%",
+		},50000);
+	};
+	function cloud5() {
+		$('#c5').css('right','-300px');
+		$('#c5').animate({
+			right: "100%",
+		},35000);
+	};
+	function ice() {
+		$('#ice').css({
+			'left' : '70%',
+			'bottom' : '20px'
+		});
+		$('#ice').animate({
+			left: "-120%",
+			bottom: "-400px",
+		},75000);
+	};
+	function dron() {
+		$('#dron').animate({
+			top: "350px",
+		},5000);
+		setInterval(dronRL, 600);
+		setInterval(dronRL2, 800);
+	}
+	function dronRL() {
+		$('#dron').css('transform',"rotate(1deg)");
+	}
+	function dronRL2() {
+		$('#dron').css('transform',"rotate(-1deg)");
+	}
