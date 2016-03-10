@@ -13,8 +13,7 @@
 		<meta property="og:description" content="Дом.ru Бизнес поздравляет мужчин с днем Защитника Отечества и дарит каждому ностальгический танковый симулятор прямиком из детства!" />
 		
 		<link rel="stylesheet" href="tpl/css/style.css" type="text/css" />
-		<link rel="stylesheet" href="tpl/css/style_new.css" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="css/BattleCity.css" />
+		<link rel="stylesheet" href="tpl/css/ball-clip-rotate-pulse.css" type="text/css" />
 		<link rel="shortcut icon" href="tpl/img/favicon.ico" />
 		
 		<script src="tpl/js/jquery.js"></script>
@@ -25,7 +24,7 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
+	<body class="disable">
 		<div id="ship">
 			<img src="tpl/img/ship.png"/>
 			<img src="tpl/img/ship2.png" id="myship"/>
@@ -80,6 +79,13 @@
 		<div id="arrowRight" class="arrow"></div>
 		<div id="arrowDown" class="arrow"></div>
 		<div id="arrowLeft" class="arrow"></div>
+		<div id="share">
+			<a href="#" id="now">Поделиться</a>
+			<div class="clr"></div>
+			<div id="sherebot">
+				<img src="tpl/img/soc.png"/>
+			</div>
+		</div>
 		<div id="overlay"></div>
 		<div id="firstScreen" class="active">
 			<div class="top"></div>
@@ -94,8 +100,17 @@
 				<div class="sq8"></div>
 			</div>
 			<div class="fScont">
-				<a href="#">Начать!</a>
+				<h3 class="tank">Бренду Дом.ru Бизнес  5 лет!</h3>
+				<p>Словно ледокол в суровом океане информации из дня в день наша компания прокладывать путь для каждого клиента!</p>
+				<br/><br/>
+				<p style="margin-top:100px">Сегодня, в день рождения нашего бренда, мы решили рассказать, об отделах, которые приводят в движение корабль под названием Дом.ru</p>
+				<a href="#">Вперед в плаванье!</a>
 			</div>
+		</div>
+		<div id="disable">
+			<div id="in">
+				Загрузка
+			<div class="la-ball-clip-rotate-pulse la-2x"><div></div><div></div></div>
 		</div>
 	</body>
 </html>
