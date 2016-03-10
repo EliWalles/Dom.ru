@@ -262,6 +262,9 @@ html, body {
     left: 1015px;
     top: 335px;
 }
+.op05 {
+	opacity: 0.5 !important;
+}
 #opis.pc3 {
     left: 1265px;
     top: 335px;
