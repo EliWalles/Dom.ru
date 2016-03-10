@@ -179,11 +179,13 @@ html, body {
 	position: absolute;
 	left: 50px;
 	top: 170px;
+	z-index: 4;
 }
 #water {
 	position: absolute;
 	left: 0px;
 	bottom: 0px;
+	z-index: 5;
 }
 /* Интро */
 #overlay {
