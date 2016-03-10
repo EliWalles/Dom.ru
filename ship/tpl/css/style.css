@@ -151,9 +151,16 @@ html, body {
     top: 610px;
     left: 750px;
 }
+#pc7 {
+    top: 660px;
+    left: 1220px;
+}
 #pc {
     top: 400px;
     left: 1240px;
+}
+#pc a.active {
+	background: url(../img/circlea.png) center center no-repeat;
 }
 #clouds img {
     position: absolute;
@@ -199,6 +206,103 @@ html, body {
 	z-index: 5;
 	left: 1462px;
 	top: 531px;
+}
+#pcI {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+}
+#pcI img {
+    opacity: 0;
+}
+#pcI img.active {
+    opacity: 1;
+}
+#pcI1 {
+    position: absolute;
+    left: 1084px;
+    top: 385px;
+}
+#pcI2 {
+    position: absolute;
+    left: 818px;
+    top: 543px;
+}
+#pcI3 {
+    position: absolute;
+    left: 1085px;
+    top: 542px;
+}
+#pcI4 {
+    position: absolute;
+    left: 248px;
+    top: 747px;
+}
+#pcI5 {
+    position: absolute;
+    left: 241px;
+    top: 718px;
+}
+#pcI6 {
+    position: absolute;
+    left: 1182px;
+    top: 648px;
+}
+#pcI7 {
+    position: absolute;
+    left: 616px;
+    top: 619px;
+}
+#opis.pc1 {
+    left: 1255px;
+    top: 210px;
+}
+#opis.pc2 {
+    left: 1015px;
+    top: 335px;
+}
+#opis.pc3 {
+    left: 1265px;
+    top: 335px;
+}
+#opis.pc4 {
+    left: 517px;
+    top: 590px;
+}
+#opis.pc5 {
+    left: 348px;
+    top: 501px;
+}
+#opis.pc6 {
+    left: 1246px;
+    top: 564px;
+}
+#opis.pc7 {
+    left: 766px;
+    top: 419px;
+}
+#opis {
+    background: url(../img/opis.png);
+    padding: 20px 151px 20px 15px;
+    height: 170px;
+    position: absolute;
+    left: 0;
+    z-index: 7;
+    width: 170px;
+}
+#title {
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+	font-family: 'FedraSansAltPro-MediumTF';
+}
+#cont {
+	font-size: 14px;
+	color: #ffffff;
+	margin: 0;
+	font-family: 'FedraSansAltPro-BookTF';
 }
 /* Интро */
 #overlay {
