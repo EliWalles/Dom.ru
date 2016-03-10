@@ -63,7 +63,7 @@ html, body {
 	top: 30px;
 	left: 30px;
 	padding: 8px 0;
-	z-index: 9;
+	z-index: 7;
 }
 #places {
 	position: relative;
@@ -192,7 +192,7 @@ html, body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 2;
+	z-index: 9;
 	background: rgba(0,0,0,0.5);
 }
 
@@ -204,7 +204,7 @@ html, body {
 	margin-top: -345px;
 	left: 50%;
 	margin-left: -337.5px;
-	z-index: 3;
+	z-index: 10;
 }
 
 #firstScreen .top {
