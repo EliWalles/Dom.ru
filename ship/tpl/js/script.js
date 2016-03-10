@@ -45,10 +45,12 @@ $(
 
 	}
 );
-
-$(document).ready(function(){
+$(window).load(function(){
+	
 	$('body').removeClass('disable');
 	$('#disable').remove();
+})
+$(document).ready(function(){
 	$('#pcI img').hover(function() {
 		$(this).addClass('op05');
 	}, function() {
