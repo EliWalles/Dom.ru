@@ -36,12 +36,18 @@ $(
 			pc(Pid);
 			e.preventDefault();
 		});
+
+		$('#now').click(function(e){
+			$('#sherebot').slideDown();
+			e.preventDefault();
+		});
 		
 
 	}
 );
 
 $(document).ready(function(){
+	$('body').removeClass('disable');
 	$('#pcI img').hover(function() {
 		$(this).addClass('op05');
 	}, function() {
