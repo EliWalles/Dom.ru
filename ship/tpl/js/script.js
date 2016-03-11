@@ -211,7 +211,7 @@ function ShipCenter() {
 		$('#pcI7').animate({'top':"618"},1);
 	}
 	function pc(idf) {
-		if (idf==4 || idf==6 || idf==5) {
+		if (idf==4 || idf==5) {
 			var dH = 1080-$(window).height();
 			$('#ship').animate({
 			left: "0",
