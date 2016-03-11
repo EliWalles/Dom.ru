@@ -268,7 +268,6 @@ function ShipCenter() {
 		pc(1);
 	}
 
-
 function addHandler(object, event, handler) {
     if (object.addEventListener) {
       object.addEventListener(event, handler, false);
@@ -281,7 +280,6 @@ function addHandler(object, event, handler) {
   // Добавляем обработчики для разных браузеров
   addHandler(window, 'DOMMouseScroll', wheel);
   addHandler(window, 'mousewheel', wheel);
-  addHandler(document, 'mousewheel', wheel);
   // Функция, обрабатывающая событие
   function wheel(event) {
     var delta; // Направление колёсика мыши
@@ -298,7 +296,6 @@ function addHandler(object, event, handler) {
     // Запрещаем обработку события браузером по умолчанию
     if (event.preventDefault) event.preventDefault();
     event.returnValue = false;
-    alert(delta);
     if (delta>0) {
 	       var pid = $('#places a.active').attr('data-id');
 	       pid = Number(pid) - 1;
