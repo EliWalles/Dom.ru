@@ -1,12 +1,9 @@
 $(
 	function () {
 		ShipCenter();
-		arrowHover();
 		$('.fScont a').click(function(e){
 			$('#firstScreen').removeClass('active').slideUp();
 			$('#overlay').hide();
-			sceneManager.toLoadingScene();
-			setInterval(gameLoop, 1000 / FPS);
 			e.preventDefault();
 		});
 		
@@ -20,28 +17,89 @@ $(
 	    });
 		
 		$('#places a').click(function(e){
+			$('#opis').hide();
 			var Pid = $(this).data('id');
 			pc(Pid);
 			e.preventDefault();
 		});
 		
 		$('#pc a').click(function(e){
+
+		$('#opis').hide();
 			var Pid = $(this).data('id');
 			pc(Pid);
 			e.preventDefault();
 		});
 		
 		$('#pcI img').click(function(e){
+
+			$('#opis').hide();
 			var Pid = $(this).data('id');
 			pc(Pid);
 			e.preventDefault();
 		});
-
+/*
+		$('#places a').hover(function() {
+			var Pid = $(this).data('id');
+			setTimeout(function(){
+				$('#opis').hide();
+				pc(Pid);
+			},500);
+		}, function() {});
+		$('#pc a').hover(function() {
+			var Pid = $(this).data('id');
+			setTimeout(function(){
+				$('#opis').hide();
+				pc(Pid);
+			},500);
+		}, function() {});
+		$('#pcI img').hover(function() {
+			var Pid = $(this).data('id');
+			setTimeout(function(){
+				$('#opis').hide();
+				pc(Pid);
+			},500);
+		}, function() {});
+*/
 		$('#now').click(function(e){
 			$('#sherebot').slideDown();
 			e.preventDefault();
 		});
-		
+
+
+		var $doc = $(document),
+		ratio = 0.1,
+        mousepos, to;
+        $doc.on('mousedown', 'body', dragstart);
+        function dragstart(e) {
+            e.preventDefault();
+            mouseposX = e.screenX;
+            mouseposY = e.screenY;
+            $doc.on('mousemove.drag', drag); //в неймспейсе drag, чтобы потом отключить безболезненно для остальных листенеров
+            $doc.one('mouseup', dragstop);
+    	}
+    	function drag(e) {
+    	    clearTimeout(to);
+    	    	var deltaX = (e.screenX - mouseposX)*ratio;
+    	    	var deltaY = (e.screenY - mouseposY)*ratio;
+    	    	to = setTimeout(function () {
+    	    	var dW = -1920+$(window).width();
+    	    	var dH = 1095-$(window).width();
+    	    	var wsleft = parseInt($('#ship').css('left'))+deltaX;
+    	    	var wstop = parseInt($('#ship').css('top'))+deltaY;
+    	    	if (wsleft<0 && wsleft>dW) {
+    	    		$('#ship').css({'left' : wsleft+'px'})
+    	    	}
+    	    	if (wstop<0 && wstop>dH) {
+    	    		$('#ship').css({'top' : wstop+'px'})
+    	    	}
+            	mousepos = e.screenX;
+        	}, 1);
+    	}
+
+    	function dragstop() {
+        	$doc.off('mousemove.drag'); //отключаем свой mousemove.
+    	}
 
 	}
 );
@@ -51,11 +109,7 @@ $(window).load(function(){
 	$('#disable').remove();
 })
 $(document).ready(function(){
-	$('#pcI img').hover(function() {
-		$(this).addClass('op05');
-	}, function() {
-		$(this).removeClass('op05');
-	});
+	
 });
 
 function ShipCenter() {
@@ -68,42 +122,16 @@ function ShipCenter() {
 			'left':'-'+dW+'px',
 			'top':'-'+dH+'px',
 		});
-		$('.arrow').show();
+	}
+	if (sW==1920) {
+		var dH = (1080-sH)/2;
+		$('#ship').css({
+			'top':'-'+dH+'px',
+		});
 	}
 	onloadp();
 }
 
-function arrowHover() {
-	$( "#arrowUP" ).hover(function() {
-		var aTop = $('#ship').css('top');
-		$('#ship').animate({
-			top: "0",
-		},1000);
-	}, function() {});
-	$( "#arrowRight" ).hover(function() {
-		var aRight = $('#ship').css('left');
-		var sW = $(window).width();
-		var dW = 1920-sW;
-
-		$('#ship').animate({
-			left: "-"+dW+'px',
-		},1000);
-	}, function() {});
-	$( "#arrowDown" ).hover(function() {
-		var aRight = $('#ship').css('left');
-		var sH = $(window).height();
-		var dH = 1080-sH;
-		$('#ship').animate({
-			top: "-"+dH+'px',
-		},1000);
-	}, function() {});
-	$( "#arrowLeft" ).hover(function() {
-		var aRight = $('#ship').css('left');
-		$('#ship').animate({
-			left: "0",
-		},1000);
-	}, function() {});
-}
 	function cloud1() {
 		$('#c1').css('right','-300px');
 		$('#c1').animate({
@@ -137,7 +165,7 @@ function arrowHover() {
 	function ice() {
 		$('#ice').css({
 			'left' : '70%',
-			'bottom' : '20px'
+			'bottom' : '70px'
 		});
 		$('#ice').animate({
 			left: "-120%",
@@ -157,7 +185,47 @@ function arrowHover() {
 	function dronRL2() {
 		$('#dron').css('transform',"rotate(-1deg)");
 	}
+	function ship() {
+		setInterval(shipT, 1200);
+		setInterval(shipD, 1300);
+	}
+	function shipT() {
+		$('#myship').animate({'top':"171"},1);
+		$('#pcI1').animate({'top':"386"},1);
+		$('#pcI2').animate({'top':"544"},1);
+		$('#pcI3').animate({'top':"543"},1);
+		$('#pcI4').animate({'top':"748"},1);
+		$('#pcI5').animate({'top':"719"},1);
+		$('#pcI6').animate({'top':"649"},1);
+		$('#pcI7').animate({'top':"620"},1);
+		
+	}
+	function shipD() {
+		$('#myship').animate({'top':"169"},1);
+		$('#pcI1').animate({'top':"383"},1);
+		$('#pcI2').animate({'top':"542"},1);
+		$('#pcI3').animate({'top':"541"},1);
+		$('#pcI4').animate({'top':"746"},1);
+		$('#pcI5').animate({'top':"717"},1);
+		$('#pcI6').animate({'top':"647"},1);
+		$('#pcI7').animate({'top':"618"},1);
+	}
 	function pc(idf) {
+		if (idf==4 || idf==6 || idf==5) {
+			var dH = 1080-$(window).height();
+			$('#ship').animate({
+			left: "0",
+			top: -dH,
+		},1000);
+		} else {
+		var dW = (1920-$(window).width())/2;
+		var dH = (1080-$(window).height())/2;
+			$('#ship').animate({
+			left: -dW,
+			top: -dH,
+		},1000);
+
+		}
 		$('#opis').removeClass('pc1');
 		$('#opis').removeClass('pc2');
 		$('#opis').removeClass('pc3');
@@ -167,13 +235,19 @@ function arrowHover() {
 		$('#opis').removeClass('pc7');
 		$('#places a').removeClass('active');
 		$('#pc a').removeClass('active');
-		$('#pcI img').removeClass('active');
+		$('#pcI img').each(function(){
+			$(this).css('opacity',0);});
 		$('#pc'+idf).addClass('active');
-		$('#pcI'+idf).addClass('active');
+		$('#pcI'+idf).animate({
+			'opacity' : 1
+		},500);
 		$('#pl'+idf).addClass('active');
 		$('#title').html($('#pl'+idf).html());
 		$('#cont').html($('#pc'+idf).data('text'));
-		$('#opis').addClass('pc'+idf)
+		$('#opis').addClass('pc'+idf);
+
+		$('#opis').fadeIn();
+
 	}
 
 	function onloadp() {
@@ -184,6 +258,7 @@ function arrowHover() {
 		cloud5();
 		ice();
 		dron();
+		ship();
 		setInterval(ice, 80000);
 		setInterval(cloud1, 35000);
 		setInterval(cloud2, 45000);
@@ -223,6 +298,7 @@ function addHandler(object, event, handler) {
     // Запрещаем обработку события браузером по умолчанию
     if (event.preventDefault) event.preventDefault();
     event.returnValue = false;
+    alert(delta);
     if (delta>0) {
 	       var pid = $('#places a.active').attr('data-id');
 	       pid = Number(pid) - 1;
