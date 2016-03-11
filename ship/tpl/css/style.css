@@ -375,12 +375,12 @@ html, body {
 	text-indent: -9999px;
 }
 
-#sherebot ul>li:nth-child(1) a {	background-position: 0 0;}
-#sherebot ul>li:nth-child(2) a {	background-position: -60px 0;}
-#sherebot ul>li:nth-child(3) a {	background-position: -121px 0;}
-#sherebot ul>li:nth-child(4) a {	background-position: -182px 0;}
-#sherebot ul>li:nth-child(5) a {	background-position: -243px 0;}
-#sherebot ul>li:nth-child(6) a {	background-position: -304px 0;}
+#sherebot ul>li:nth-child(1) a {	background-position: -60px 0;}
+#sherebot ul>li:nth-child(2) a {	background-position: -121px 0;}
+#sherebot ul>li:nth-child(3) a {	background-position: -304px 0;}
+#sherebot ul>li:nth-child(4) a {	background-position: -243px 0;}
+#sherebot ul>li:nth-child(5) a {	background-position: -182px 0;}
+#sherebot ul>li:nth-child(6) a {	background-position: 0 0;}
 
 
 
