@@ -62,7 +62,14 @@ $(
 		}, function() {});
 */
 		$('#now').click(function(e){
-			$('#sherebot').slideDown();
+			if($(this).hasClass('active')===false) {
+  				$('#sherebot').slideDown();
+  				$(this).addClass('active');
+  			} else { 
+    			$('#sherebot').slideUp(); 
+  				$(this).removeClass('active');
+			}	
+
 			e.preventDefault();
 		});
 
@@ -162,15 +169,60 @@ function ShipCenter() {
 			right: "100%",
 		},35000);
 	};
-	function ice() {
-		$('#ice').css({
-			'left' : '70%',
-			'bottom' : '70px'
+	function ice(ice) {
+		var b,l,b0,l0;
+
+			l 	=	'-400px';
+		if (ice == 1) {
+			b0	=	'146px';
+			l0	=	'105%';
+			b 	=	'-34px';
+			t 	=	50000;
+		}
+		if (ice == 2) {
+			b0	=	'40px';
+			l0	=	'100%';
+			b 	=	'-115px';
+			t 	=	53000;
+		}
+		if (ice == 3) {
+			b0	=	'80px';
+			l0	=	'111%';
+			b 	=	'-115px';
+			t 	=	57000;
+		}
+		if (ice == 4) {
+			b0	=	'140px';
+			l0	=	'135%';
+			b 	=	'-115px';
+			t 	=	60000;
+		}
+		if (ice == 5) {
+			b0	=	'245px';
+			l0	=	'210%';
+			b 	=	'-100px';
+			t 	=	65000;
+		}
+		if (ice == 6) {
+			b0	=	'205px';
+			l0	=	'225%';
+			b 	=	'-100px';
+			t 	=	65000;
+		}
+		if (ice == 7) {
+			b0	=	'260px';
+			l0	=	'240%';
+			b 	=	'-100px';
+			t 	=	65000;
+		}
+		$('#ice'+ice).css({
+			'left' : l0,
+			'bottom' : b0
 		});
-		$('#ice').animate({
-			left: "-120%",
-			bottom: "-400px",
-		},75000);
+		$('#ice'+ice).animate({
+			left: l,
+			bottom: b,
+		},t);
 	};
 	function dron() {
 		$('#dron').animate({
@@ -185,34 +237,13 @@ function ShipCenter() {
 	function dronRL2() {
 		$('#dron').css('transform',"rotate(-1deg)");
 	}
-	function ship() {
-		setInterval(shipT, 1200);
-		setInterval(shipD, 1300);
-	}
-	function shipT() {
-		$('#myship').animate({'top':"171"},1);
-		$('#pcI1').animate({'top':"386"},1);
-		$('#pcI2').animate({'top':"544"},1);
-		$('#pcI3').animate({'top':"543"},1);
-		$('#pcI4').animate({'top':"748"},1);
-		$('#pcI5').animate({'top':"719"},1);
-		$('#pcI6').animate({'top':"649"},1);
-		$('#pcI7').animate({'top':"620"},1);
-		
-	}
-	function shipD() {
-		$('#myship').animate({'top':"169"},1);
-		$('#pcI1').animate({'top':"383"},1);
-		$('#pcI2').animate({'top':"542"},1);
-		$('#pcI3').animate({'top':"541"},1);
-		$('#pcI4').animate({'top':"746"},1);
-		$('#pcI5').animate({'top':"717"},1);
-		$('#pcI6').animate({'top':"647"},1);
-		$('#pcI7').animate({'top':"618"},1);
-	}
+
 	function pc(idf) {
 		if (idf==4 || idf==5) {
 			var dH = 1080-$(window).height();
+			if ($(window).width()<1920) {
+				dH = dH-60;
+			}
 			$('#ship').animate({
 			left: "0",
 			top: -dH,
@@ -235,9 +266,9 @@ function ShipCenter() {
 		$('#opis').removeClass('pc7');
 		$('#places a').removeClass('active');
 		$('#pc a').removeClass('active');
-		$('#pcI img').each(function(){
-			$(this).css('opacity',0);});
+		$('#pcI img').css('opacity',0);
 		$('#pc'+idf).addClass('active');
+		$('#pcI img').css('opacity',0);
 		$('#pcI'+idf).animate({
 			'opacity' : 1
 		},500);
@@ -256,10 +287,14 @@ function ShipCenter() {
 		cloud3();
 		cloud4();
 		cloud5();
-		ice();
 		dron();
-		ship();
-		setInterval(ice, 80000);
+		setInterval(ice(1), 60000);
+		setInterval(ice(2), 60000);
+		setInterval(ice(3), 60000);
+		setInterval(ice(4), 60000);
+		setInterval(ice(5), 60000);
+		setInterval(ice(6), 60000);
+		setInterval(ice(7), 60000);
 		setInterval(cloud1, 35000);
 		setInterval(cloud2, 45000);
 		setInterval(cloud3, 30000);
