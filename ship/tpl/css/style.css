@@ -309,18 +309,18 @@ html, body {
 }
 #opis {
     background: url(../img/opis.png);
-    padding: 12px 130px 12px 5px;
+    padding: 12px 130px 12px 10px;
     height: 186px;
     position: absolute;
     left: 0;
     z-index: 7;
-    width: 201px;
+    width: 196px;
 }
 #title {
 	font-size: 18px;
 	color: #ffffff;
 	text-transform: uppercase;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-family: 'FedraSansAltPro-MediumTF';
 }
 #cont {
