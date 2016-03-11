@@ -309,12 +309,12 @@ html, body {
 }
 #opis {
     background: url(../img/opis.png);
-    padding: 20px 131px 20px 15px;
-    height: 170px;
+    padding: 12px 130px 12px 5px;
+    height: 186px;
     position: absolute;
     left: 0;
     z-index: 7;
-    width: 190px;
+    width: 201px;
 }
 #title {
 	font-size: 18px;
